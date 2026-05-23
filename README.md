@@ -1,3 +1,4 @@
+<img width="1327" height="553" alt="finance" src="https://github.com/user-attachments/assets/3ea35780-0950-4c12-84a2-1c44577e66b0" />
 # finalcial_management
 
 A new Flutter project.

@@ -1,15 +1,21 @@
-import 'package:finalcial_management/providers/theme.dart';
-import 'package:finalcial_management/screens/home_screen.dart';
+import 'package:finalcial_management/utils/theme/app_themes.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
+import 'app/localization/app_translations.dart';
+import 'data/services/storage_service.dart';
+import 'features/dashboard/controllers/theme_controller.dart';
+import 'navigation_menu.dart';
 
-void main() {
-  runApp(
-    MultiProvider(
-      providers: [ChangeNotifierProvider(create: (context) => ThemeProvider())],
-      child: MyApp(),
-    ),
-  );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Storage Service initialization
+  await Get.putAsync(() => StorageService().init());
+
+  // Inject Theme Controller
+  Get.put(ThemeController());
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,10 +23,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final themeController = ThemeController.instance;
+
+    return Obx(() => GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-      theme: Provider.of<ThemeProvider>(context).themeData,
-    );
+      title: 'BusinessBro',
+      translations: AppTranslations(),
+      locale: Locale(themeController.currentLanguage),
+      fallbackLocale: const Locale('en'),
+      theme: AppThemes.lightMode,
+      darkTheme: AppThemes.darkMode,
+      themeMode: themeController.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      home: const NavigationMenu(),
+    ));
   }
 }

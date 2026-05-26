@@ -40,6 +40,10 @@ dependencies:
   get: ^4.7.3
   font_awesome_flutter: ^11.0.0
   flutter_launcher_icons: ^0.14.4
+  pdf: ^3.12.0
+  printing: ^5.14.3
+  bangla_pdf_fixer: ^2.0.0
+  bangla_pdf: ^1.0.6
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +71,8 @@ flutter:
   assets:
     - assets/icon/
     - assets/logo/
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

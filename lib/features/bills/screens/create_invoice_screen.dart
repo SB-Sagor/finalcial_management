@@ -17,6 +17,13 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
   final controller = Get.put(InvoiceController());
   bool _isCftCalculatorMode = true;
 
+  @override
+  void initState() {
+    super.initState();
+    if(Get.arguments!=null && Get.arguments is String){
+      controller.clientNameController.text = Get.arguments;
+    }
+  }
   // final _lenFtFocus = FocusNode();
   // final _lenInFocus = FocusNode();
   // final _widFtFocus = FocusNode();
@@ -78,6 +85,17 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
     // _widInFocus.dispose();
     // _hgtFtFocus.dispose();
     // _hgtInFocus.dispose();
+
+    controller.clientNameController.clear();
+    controller.itemNameController.clear();
+    controller.rateController.clear();
+    controller.quantityController.clear();
+    controller.paidAmountController.clear();
+    controller.truckCountController.text = ''; // Default reset
+    controller.perTruckFareController.clear();
+    controller.subTotal.value = 0.0;
+    controller.remainingDue.value = 0.0;
+    controller.cftMeasurementDetails = '';
 
     super.dispose();
   }
@@ -289,7 +307,7 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                             // focusNode: _rate,
                             keyboardType: TextInputType.number,
                             prefixIcon: Iconsax.money_3,
-                            onChanged: (_) => _calculateCft(),
+                            onChanged: (_) => controller.calculateInvoice(),
                           ),
                         ),
                         const SizedBox(width: 12),

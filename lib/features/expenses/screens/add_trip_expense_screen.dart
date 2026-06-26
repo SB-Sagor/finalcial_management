@@ -34,7 +34,6 @@ class AddTripExpenseScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // গাড়ির নাম্বার ইনপুট
                     UInvoiceTextField(
                       label: 'গাড়ির নাম্বার (Vehicle No.)',
                       hint: 'যেমন: ঢাকা মেট্রো-ট ১১-১২৩৪',
@@ -43,7 +42,6 @@ class AddTripExpenseScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
 
-                    // ড্রাইভারের নাম
                     UInvoiceTextField(
                       label: 'ড্রাইভারের নাম',
                       hint: 'যেমন: রহিম মিয়া',
@@ -52,7 +50,6 @@ class AddTripExpenseScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
 
-                    // ৩টি খরচের ক্যাটাগরি (তেল, টোল, অন্যান্য)
                     UInvoiceTextField(
                       label: 'জ্বালানি/তেল খরচ',
                       hint: '৳ ০.০০',
@@ -87,7 +84,6 @@ class AddTripExpenseScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 20),
 
-                    // কাস্টম পেমেন্ট মেথড সিলেক্টর
                     Obx(() => UPaymentMethodSelector(
                       selectedMethod: controller.selectedPaymentMethod.value,
                       onMethodSelected: (method) => controller.updatePaymentMethod(method),
@@ -97,7 +93,6 @@ class AddTripExpenseScreen extends StatelessWidget {
               ),
             ),
 
-            // --- মোট খরচ ও কনফার্মেশন বটম প্যানেল ---
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -119,7 +114,6 @@ class AddTripExpenseScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
 
-                    // সাবমিট বাটন
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(

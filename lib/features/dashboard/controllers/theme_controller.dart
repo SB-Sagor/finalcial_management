@@ -5,7 +5,7 @@ import '../../../data/services/storage_service.dart';
 class ThemeController extends GetxController {
   static ThemeController get instance => Get.find();
 
-  final _isDarkMode = true.obs;
+  final _isDarkMode = false.obs;
   final _currentLanguage = 'en'.obs;
 
   bool get isDarkMode => _isDarkMode.value;
@@ -14,10 +14,11 @@ class ThemeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _isDarkMode.value = StorageService.instance.getThemeMode();
+    _isDarkMode.value = StorageService.instance.getThemeMode()??false;
     _currentLanguage.value = StorageService.instance.getLanguage();
 
     // Set initial configuration
+    Get.changeThemeMode(_isDarkMode.value?ThemeMode.dark:ThemeMode.light);
     Get.updateLocale(Locale(_currentLanguage.value));
   }
 

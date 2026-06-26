@@ -11,7 +11,7 @@ class StorageService extends GetxService {
   }
 
   // Theme Key Handlers
-  bool getThemeMode() => _prefs.getBool('isDarkMode') ?? true;
+  bool getThemeMode() => _prefs.getBool('isDarkMode') ?? false;
   Future<void> saveThemeMode(bool isDark) async => await _prefs.setBool('isDarkMode', isDark);
 
   // Language Key Handlers

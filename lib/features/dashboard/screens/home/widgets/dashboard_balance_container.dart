@@ -26,7 +26,7 @@ class UDashboardBalancedContainer extends StatelessWidget {
     final isLight = theme.brightness == Brightness.light;
 
     return Container(
-      margin: const EdgeInsets.all(2),
+      margin: const EdgeInsets.symmetric(horizontal: 4,vertical: 6),
       padding: const EdgeInsets.all(USizes.cardPadding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(USizes.cardRadius),

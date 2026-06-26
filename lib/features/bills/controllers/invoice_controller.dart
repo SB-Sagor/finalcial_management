@@ -12,7 +12,7 @@ class InvoiceController extends GetxController {
   final quantityController = TextEditingController();
   final paidAmountController = TextEditingController();
 
-  final truckCountController = TextEditingController(text: '');
+  final truckCountController = TextEditingController(text: '1');
   final perTruckFareController = TextEditingController();
 
   RxDouble subTotal = 0.0.obs;
@@ -139,17 +139,18 @@ class InvoiceController extends GetxController {
                         pw.Padding(
                           padding: const pw.EdgeInsets.all(8),
                           child: pw.Text(
-                            'Rate',
+                            'Qty / CFT',
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
                           ),
                         ),
                         pw.Padding(
                           padding: const pw.EdgeInsets.all(8),
                           child: pw.Text(
-                            'Qty / CFT',
+                            'Rate',
                             style: pw.TextStyle(fontWeight: pw.FontWeight.bold),
                           ),
                         ),
+
                         pw.Padding(
                           padding: const pw.EdgeInsets.all(8),
                           child: pw.Text(
@@ -202,19 +203,20 @@ class InvoiceController extends GetxController {
                         pw.Padding(
                           padding: const pw.EdgeInsets.all(8),
                           child: pw.Text(
-                            rateController.text.isEmpty
-                                ? '0.00'
-                                : rateController.text,
-                          ),
-                        ),
-                        pw.Padding(
-                          padding: const pw.EdgeInsets.all(8),
-                          child: pw.Text(
                             quantityController.text.isEmpty
                                 ? '0.00'
                                 : quantityController.text,
                           ),
                         ),
+                        pw.Padding(
+                          padding: const pw.EdgeInsets.all(8),
+                          child: pw.Text(
+                            rateController.text.isEmpty
+                                ? '0.00'
+                                : rateController.text,
+                          ),
+                        ),
+
                         pw.Padding(
                           padding: const pw.EdgeInsets.all(8),
                           child: pw.Text(

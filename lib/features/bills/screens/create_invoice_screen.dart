@@ -17,14 +17,14 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
   final controller = Get.put(InvoiceController());
   bool _isCftCalculatorMode = true;
 
-  final _lenFtFocus = FocusNode();
-  final _lenInFocus = FocusNode();
-  final _widFtFocus = FocusNode();
-  final _widInFocus = FocusNode();
-  final _hgtFtFocus = FocusNode();
-  final _hgtInFocus = FocusNode();
-  final _rate = FocusNode();
-  final _truck = FocusNode();
+  // final _lenFtFocus = FocusNode();
+  // final _lenInFocus = FocusNode();
+  // final _widFtFocus = FocusNode();
+  // final _widInFocus = FocusNode();
+  // final _hgtFtFocus = FocusNode();
+  // final _hgtInFocus = FocusNode();
+  // final _rate = FocusNode();
+  // final _truck = FocusNode();
 
   final _lenFtController = TextEditingController();
   final _lenInController = TextEditingController();
@@ -72,12 +72,12 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
     _hgtInController.dispose();
 
     // Dispose focus nodes
-    _lenFtFocus.dispose();
-    _lenInFocus.dispose();
-    _widFtFocus.dispose();
-    _widInFocus.dispose();
-    _hgtFtFocus.dispose();
-    _hgtInFocus.dispose();
+    // _lenFtFocus.dispose();
+    // _lenInFocus.dispose();
+    // _widFtFocus.dispose();
+    // _widInFocus.dispose();
+    // _hgtFtFocus.dispose();
+    // _hgtInFocus.dispose();
 
     super.dispose();
   }
@@ -154,18 +154,18 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                               label: 'দৈর্ঘ্য (ফুট)',
                               hint: '০',
                               controller: _lenFtController,
-                              focusNode: _lenFtFocus,
+                              // focusNode: _lenFtFocus,
                               keyboardType: TextInputType.number,
                               prefixIcon: Iconsax.ruler,
-                              onSubmitted: (_) => FocusScope.of(
-                                context,
-                              ).requestFocus(_lenInFocus),
+                              // onSubmitted: (_) => FocusScope.of(
+                              //   context,
+                              // ).requestFocus(_lenInFocus),
                               onChanged: (value) {
-                                if (value.isNotEmpty) {
-                                  FocusScope.of(
-                                    context,
-                                  ).requestFocus(_lenInFocus);
-                                }
+                                // if (value.isNotEmpty) {
+                                //   FocusScope.of(
+                                //     context,
+                                //   ).requestFocus(_lenInFocus);
+                                // }
                                 _calculateCft();
                               },
                             ),
@@ -176,18 +176,18 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                               label: 'দৈর্ঘ্য (ইঞ্চি)',
                               hint: '০',
                               controller: _lenInController,
-                              focusNode: _lenInFocus,
+                              // focusNode: _lenInFocus,
                               keyboardType: TextInputType.number,
                               prefixIcon: Iconsax.ruler,
-                              onSubmitted: (_) => FocusScope.of(
-                                context,
-                              ).requestFocus(_widFtFocus),
+                              // onSubmitted: (_) => FocusScope.of(
+                              //   context,
+                              // ).requestFocus(_widFtFocus),
                               onChanged: (value) {
-                                if (value.isNotEmpty) {
-                                  FocusScope.of(
-                                    context,
-                                  ).requestFocus(_widFtFocus);
-                                }
+                                // if (value.isNotEmpty) {
+                                //   FocusScope.of(
+                                //     context,
+                                //   ).requestFocus(_widFtFocus);
+                                // }
                                 _calculateCft();
                               },
                             ),
@@ -202,15 +202,15 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                               label: 'প্রস্থ (ফুট)',
                               hint: '০',
                               controller: _widFtController,
-                              focusNode: _widFtFocus,
+                              // focusNode: _widFtFocus,
                               keyboardType: TextInputType.number,
                               prefixIcon: Iconsax.ruler,
                               onChanged: (value) {
-                                if (value.isNotEmpty) {
-                                  FocusScope.of(
-                                    context,
-                                  ).requestFocus(_widInFocus);
-                                }
+                                // if (value.isNotEmpty) {
+                                //   FocusScope.of(
+                                //     context,
+                                //   ).requestFocus(_widInFocus);
+                                // }
                                 _calculateCft();
                               },
                             ),
@@ -221,15 +221,15 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                               label: 'প্রস্থ (ইঞ্চি)',
                               hint: '০',
                               controller: _widInController,
-                              focusNode: _widInFocus,
+                              // focusNode: _widInFocus,
                               keyboardType: TextInputType.number,
                               prefixIcon: Iconsax.ruler,
                               onChanged: (value) {
-                                if (value.isNotEmpty) {
-                                  FocusScope.of(
-                                    context,
-                                  ).requestFocus(_hgtFtFocus);
-                                }
+                                // if (value.isNotEmpty) {
+                                //   FocusScope.of(
+                                //     context,
+                                //   ).requestFocus(_hgtFtFocus);
+                                // }
                                 _calculateCft();
                               },
                             ),
@@ -244,15 +244,15 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                               label: 'উচ্চতা (ফুট)',
                               hint: '০',
                               controller: _hgtFtController,
-                              focusNode: _hgtFtFocus,
+                              // focusNode: _hgtFtFocus,
                               keyboardType: TextInputType.number,
                               prefixIcon: Iconsax.ruler,
                               onChanged: (value) {
-                                if (value.isNotEmpty) {
-                                  FocusScope.of(
-                                    context,
-                                  ).requestFocus(_hgtInFocus);
-                                }
+                                // if (value.isNotEmpty) {
+                                //   FocusScope.of(
+                                //     context,
+                                //   ).requestFocus(_hgtInFocus);
+                                // }
                                 _calculateCft();
                               },
                             ),
@@ -263,13 +263,13 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                               label: 'উচ্চতা (ইঞ্চি)',
                               hint: '০',
                               controller: _hgtInController,
-                              focusNode: _hgtInFocus,
+                              // focusNode: _hgtInFocus,
                               keyboardType: TextInputType.number,
                               prefixIcon: Iconsax.ruler,
                               onChanged: (value) {
-                                if (value.isNotEmpty) {
-                                  FocusScope.of(context).requestFocus(_rate);
-                                }
+                                // if (value.isNotEmpty) {
+                                //   FocusScope.of(context).requestFocus(_rate);
+                                // }
                                 _calculateCft();
                               },
                             ),
@@ -286,7 +286,7 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                             label: 'rate_label'.tr,
                             hint: '৳ ০.০০',
                             controller: controller.rateController,
-                            focusNode: _rate,
+                            // focusNode: _rate,
                             keyboardType: TextInputType.number,
                             prefixIcon: Iconsax.money_3,
                             onChanged: (_) => _calculateCft(),
@@ -315,7 +315,7 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                             label: 'ট্রাক সংখ্যা (Count)',
                             hint: '',
                             controller: controller.truckCountController,
-                            focusNode: _truck,
+                            // focusNode: _truck,
                             keyboardType: TextInputType.number,
                             prefixIcon: Iconsax.truck,
                             onChanged: (_) => controller.calculateInvoice(),

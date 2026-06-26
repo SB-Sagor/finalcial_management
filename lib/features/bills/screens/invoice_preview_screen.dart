@@ -16,7 +16,7 @@ class InvoicePreviewScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Invoice Preview'),
+        title: const Text('Invoice '),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 18),
           onPressed: () => Get.back(),

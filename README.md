@@ -1,4 +1,8 @@
+Dark Mode
 <img width="1327" height="553" alt="finance" src="https://github.com/user-attachments/assets/3ea35780-0950-4c12-84a2-1c44577e66b0" />
+Light Mode
+<img width="1326" height="550" alt="image" src="https://github.com/user-attachments/assets/d770d9f8-fa9f-487e-a40e-4202f618e593" />
+
 # finalcial_management
 
 A new Flutter project.

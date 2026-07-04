@@ -3,34 +3,42 @@ import 'package:get/get.dart';
 import '../../../data/services/storage_service.dart';
 
 class ThemeController extends GetxController {
-  static ThemeController get instance => Get.find();
+  static ThemeController get instance => Get.find<ThemeController>();
 
-  final _isDarkMode = false.obs;
-  final _currentLanguage = 'en'.obs;
-
-  bool get isDarkMode => _isDarkMode.value;
-  String get currentLanguage => _currentLanguage.value;
+  final RxBool isDarkMode = false.obs;
+  final RxString currentLanguage = 'en'.obs;
 
   @override
   void onInit() {
     super.onInit();
-    _isDarkMode.value = StorageService.instance.getThemeMode()??false;
-    _currentLanguage.value = StorageService.instance.getLanguage();
 
-    // Set initial configuration
-    Get.changeThemeMode(_isDarkMode.value?ThemeMode.dark:ThemeMode.light);
-    Get.updateLocale(Locale(_currentLanguage.value));
+    isDarkMode.value = StorageService.instance.getThemeMode();
+    currentLanguage.value = StorageService.instance.getLanguage();
+
+    Get.changeThemeMode(
+      isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
+    );
+
+    Get.updateLocale(
+      Locale(currentLanguage.value),
+    );
   }
 
-  void toggleTheme() {
-    _isDarkMode.value = !_isDarkMode.value;
-    Get.changeThemeMode(_isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
-    StorageService.instance.saveThemeMode(_isDarkMode.value);
+  Future<void> toggleTheme() async {
+    isDarkMode.toggle();
+
+    Get.changeThemeMode(
+      isDarkMode.value ? ThemeMode.dark : ThemeMode.light,
+    );
+
+    await StorageService.instance.saveThemeMode(isDarkMode.value);
   }
 
-  void changeLanguage(String langCode) {
-    _currentLanguage.value = langCode;
-    Get.updateLocale(Locale(langCode));
-    StorageService.instance.saveLanguage(langCode);
+  Future<void> changeLanguage(String lang) async {
+    currentLanguage.value = lang;
+
+    Get.updateLocale(Locale(lang));
+
+    await StorageService.instance.saveLanguage(lang);
   }
 }

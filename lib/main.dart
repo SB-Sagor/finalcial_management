@@ -1,19 +1,26 @@
-import 'package:finalcial_management/utils/theme/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'app/localization/app_translations.dart';
 import 'data/services/storage_service.dart';
 import 'features/dashboard/controllers/theme_controller.dart';
 import 'navigation_menu.dart';
+import 'utils/theme/app_themes.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Storage Service initialization
-  await Get.putAsync(() => StorageService().init());
+  // Initialize SharedPreferences
+  await Get.putAsync<StorageService>(
+        () => StorageService().init(),
+    permanent: true,
+  );
 
-  // Inject Theme Controller
-  Get.put(ThemeController());
+  // Initialize Theme Controller
+  Get.put<ThemeController>(
+    ThemeController(),
+    permanent: true,
+  );
 
   runApp(const MyApp());
 }
@@ -23,18 +30,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeController = ThemeController.instance;
+    final controller = ThemeController.instance;
 
-    return Obx(() => GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'BusinessBro',
-      translations: AppTranslations(),
-      locale: Locale(themeController.currentLanguage),
-      fallbackLocale: const Locale('en'),
-      theme: AppThemes.lightMode,
-      darkTheme: AppThemes.darkMode,
-      themeMode: themeController.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      home: const NavigationMenu(),
-    ));
+    return Obx(
+          () => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'BusinessBro',
+
+        // Localization
+        translations: AppTranslations(),
+            locale: Locale(controller.currentLanguage.value),
+            fallbackLocale: const Locale('en'),
+
+        // Themes
+        theme: AppThemes.lightMode,
+        darkTheme: AppThemes.darkMode,
+            themeMode: controller.isDarkMode.value
+                ? ThemeMode.dark
+                : ThemeMode.light,
+
+        // Home
+        home: const NavigationMenu(),
+      ),
+    );
   }
 }

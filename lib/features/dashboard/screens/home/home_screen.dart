@@ -45,71 +45,9 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Balance Cards
-            Row(
-              children: [
-                Expanded(
-                  child: UDashboardBalancedContainer(
-                    title: 'total_sales'.tr,
-                    amount: '৳ ৪,৫০,০০০',
-                    percentageText: '↑ 12%',
-                    amountColor: UColors.profitGreen,
-                    percentageColor: UColors.profitGreen,
-                    indicatorColor: UColors.profitGreen,
-                  ),
-                ),
-                Expanded(
-                  child: UDashboardBalancedContainer(
-                    title: 'total_due'.tr,
-                    amount: '৳ ১,২০,০০০',
-                    percentageText: '↓ 5%',
-                    amountColor: UColors.accentGold,
-                    percentageColor: UColors.accentGold,
-                    indicatorColor: UColors.accentGold,
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: UDashboardBalancedContainer(
-                    title: 'net_profit'.tr,
-                    amount: '৳ ৮৫,০০০',
-                    percentageText: '↑ 8%',
-                    amountColor: UColors.accentBlue,
-                    percentageColor: UColors.accentBlue,
-                    indicatorColor: UColors.accentBlue,
-                  ),
-                ),
-                Expanded(
-                  child: UDashboardBalancedContainer(
-                    title: 'total_loss'.tr,
-                    amount: '৳ ৫,০০০',
-                    percentageText: '↓ 2%',
-                    amountColor: UColors.lossRed,
-                    percentageColor: UColors.lossRed,
-                    indicatorColor: UColors.lossRed,
-                  ),
-                ),
-              ],
-            ),
+            // Top Balance Car
 
             const SizedBox(height: 20),
-
-            Padding(
-              padding: const EdgeInsets.only(left: 6.0, bottom: 12.0),
-              child: Text(
-                'Quick Actions',
-                style: TextStyle(
-                  fontSize: USizes.fontSizeLg,
-                  fontWeight: FontWeight.bold,
-                  color: isLight
-                      ? UColors.textPrimaryLight
-                      : UColors.textPrimaryDark,
-                ),
-              ),
-            ),
 
             // --- Premium Fixed Grid Layout ---
             GridView.count(
